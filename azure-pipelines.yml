@@ -1,0 +1,29 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: dotnet --list-sdks
+  displayName: 'Listar versões do .NET'
+
+- task: UseDotNet@2
+  displayName: 'Testes com .NET 6'
+  inputs:
+    packageType: 'sdk'
+    version: '6.0.100-preview.1.21103.13'
+    includePreviewVersions: true
+
+- script: dotnet --version
+  displayName: 'Listar versões do .NET'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: './SiteContagem'
