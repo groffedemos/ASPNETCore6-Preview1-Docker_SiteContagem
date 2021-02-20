@@ -21,7 +21,7 @@ steps:
     includePreviewVersions: true
 
 - script: dotnet --version
-  displayName: 'Listar versões do .NET'
+  displayName: 'Exibir versão defaut do .NET neste pipeline'
 
 - task: DotNetCoreCLI@2
   inputs:
